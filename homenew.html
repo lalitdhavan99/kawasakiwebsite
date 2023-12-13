@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <html lang="en" dir="ltr"></html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js'></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js'></script>
+
+
+
+<!--Bike list-->
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalnia&display=swap" rel="stylesheet">
+
+
+<style>
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Kalnia:wght@200;300;400;500;600;700&display=swap" );
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Kalnia', serif;
+}
+
+.sidebar_menu{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: #20e030;
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+
+.sidebar_menu .Logo{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sidebar_menu .Logo .Text_Logo{
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.sidebar_menu.open{
+  width: 260px;
+}
+
+.sidebar_menu .Logo #Button{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.sidebar_menu .Logo .icon{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.sidebar_menu.open .Logo .icon,
+.sidebar_menu.open .Logo .Text_Logo{
+  opacity: 1;
+}
+
+
+.sidebar_menu.open .Logo #Button{
+  text-align: right;
+}
+
+.sidebar_menu i{
+  color: #000000;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.sidebar_menu .Nav_Item{
+  margin-top: 20px;
+  height: 100%;
+}
+
+.sidebar_menu li{
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+}
+
+.sidebar_menu li .Menu_btn{
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  z-index: 3;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.382);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+}
+
+.sidebar_menu li:hover .Menu_btn{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidebar_menu.open li .Menu_btn{
+  display: none;
+}
+
+.sidebar_menu input{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.382);
+  font-weight: 400;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  width: 50px;
+  border: none;
+  border-radius: 17px;
+  transition: all 0.5s ease;
+  background: #f3cfff;
+}
+
+.sidebar_menu.open input{
+  padding: 0 20px 0 50px;
+  width: 100%;
+}
+
+.sidebar_menu .bx-search{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #00fd0d;
+  color: #080707;
+}
+
+.sidebar_menu.open .bx-search:hover{
+  background: #20e030;
+  color: #000000;
+}
+
+.sidebar_menu .bx-search:hover{
+  background: #000000;
+  color: #20e030;
+}
+
+.sidebar_menu li a{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 17px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  background: #20e030;
+}
+
+.sidebar_menu li a:hover{
+  background: #0a0909;
+}
+
+.sidebar_menu li a .Item_Name{
+  color: #000000;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.sidebar_menu.open li a .Item_Name{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar_menu li a:hover .Item_Name,
+.sidebar_menu li a:hover i{
+  transition: all 0.5s ease;
+  color: #20e030;
+}
+
+.sidebar_menu li i{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 17px;
+}
+
+.sidebar_menu li.Details{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom: -8px;
+  padding: 10px 14px;
+  background: #bb00fd;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.sidebar_menu.open li.Details{
+  width: 250px;
+}
+
+.sidebar_menu li .Child_Details{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.sidebar_menu li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-right: 10px;
+}
+
+.sidebar_menu li.Details .Name,
+.sidebar_menu li.Details .Roll{
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  white-space: nowrap;
+}
+ 
+.sidebar_menu li.Details .Roll{
+  font-size: 12px;
+}
+
+.sidebar_menu .Details #log_out{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #ae1e97;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 0px;
+  transition: all 0.5s ease;
+}
+
+.sidebar_menu.open .Details #log_out{
+  width: 50px;
+  background: none;
+}
+
+.Dashboard_Text{
+  position: relative;
+  background: #000c09;
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.sidebar_menu.open ~ .Dashboard_Text{
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+.Dashboard_Text .Child_Text{
+  display: inline-block;
+  color: hsl(320, 11%, 89%);
+  font-size: 22px;
+  font-weight: 450;
+  margin: 14px;
+}
+
+@media (max-width: 420px) {
+  .sidebar_menu li .Menu_btn{
+    display: none;
+  }
+}
+.sidebar_menu ul li a:hover {
+ color: #4a4a4a;
+}
+.scontainer {
+  max-width: 80%;
+  margin: auto;
+}
+.scontainer {
+  position: relative;
+  z-index: 1;
+}
+.scontainer {
+    padding: 0;
+  }
+  .left {
+  width: 35%;
+  }
+  .left {
+  padding: 150px 0 0 65px;
+  margin-top: 50px;
+  }
+  .left, .right {
+    width: 100%;
+  }
+
+  .left {
+    padding: 50px 100px 50px 50px;
+  }
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%; 
+}
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.timeline-carousel__item {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100px;
+color: #333;
+padding: 10px;
+box-sizing: border-box;
+text-align: center;
+}
+
+
+
+.hr-line {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(to right, #3bcf16 33%, rgba(228, 222, 222, 0) 0%);
+    background-repeat: repeat-x;
+    background-size: 6px 1px;
+}
+
+
+
+
+
+body {
+margin: 0;
+background-color: #1d1d1e;
+font-family: "Roboto", sans-serif;
+}
+
+* {
+outline: none;
+}
+
+.timeline-carousel {
+padding: 50px 6.9444% 90px 6.9444%;
+position: relative;
+overflow: hidden;
+}
+.timeline-carousel:after, .timeline-carousel:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  height: 100%;
+  width: 6.9444%;
+  background-color: #1d1d1e;
+  z-index: 3;
+  width: 6.9444%;
+}
+.timeline-carousel:after {
+  left: 0;
+}
+.timeline-carousel:before {
+  right: 0;
+  opacity: 0;
+}
+.timeline-carousel .slick-list {
+  overflow: visible;
+}
+.timeline-carousel .slick-dots {
+  bottom: -73px;
+}
+
+.timeline-carousel__image {
+  padding-right: 30px;
+}
+.timeline-carousel__item {
+  cursor: pointer;
+}
+.timeline-carousel__item .media-wrapper {
+  border-radius: 25px;
+  border: 1px solid green;
+  opacity: 0.4;
+  padding-bottom: 60.0%;
+  -webkit-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  -o-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+.timeline-carousel__item:last-child .timeline-carousel__item-inner:after {
+  width: calc(100% - 30px);
+}
+.timeline-carousel__item-inner {
+  position: relative;
+  padding-top: 45px;
+}
+.timeline-carousel__item-inner:after {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  left: 0;
+  content: "";
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.timeline-carousel__item-inner .year {
+  font-size: 30px;
+  line-height: 36px;
+  color: white;
+  display: table;
+  letter-spacing: -1px;
+  padding-right: 10px;
+  background-color: #1d1d1e;
+  z-index: 1;
+  position: relative;
+  margin: -15px 0 20px;
+  font-weight: 900;
+}
+.timeline-carousel__item-inner .year:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: -10px;
+  top: 0;
+  height: 100%;
+  width: 10px;
+  background-color: #1d1d1e;
+  z-index: 3;
+}
+.timeline-carousel__item-inner .month {
+  font-size: 30px;
+  text-transform: uppercase;
+  color :    green;
+  display: block;
+  margin-bottom: 30px;
+  margin-right: 100px;
+  font-weight: 900;
+}
+.timeline-carousel__item-inner p {
+  font-size: 18px;
+  line-height: 28px;
+  color: rgb(5, 5, 5);
+  width: 80%;
+  font-weight: 400;
+  margin-bottom: 15px;
+  margin-left: 100px;
+}
+.timeline-carousel__item-inner .read-more {
+  font-size: 22px;
+  color: rgb(224, 231, 230);
+  display: table;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+.timeline-carousel__item-inner .read-more:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  border-bottom: 2px solid red;
+  -webkit-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  -o-transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+.timeline-carousel__item-inner .read-more:hover:after {
+  width: 100%;
+}
+.timeline-carousel__item-inner .pointer {
+  height: 29px;
+  position: relative;
+  z-index: 1;
+  margin: -4px 0 16px;
+}
+.timeline-carousel__item-inner .pointer:after, .timeline-carousel__item-inner .pointer:before {
+  position: absolute;
+  content: "";
+}
+.timeline-carousel__item-inner .pointer:after {
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  top: 0;
+  left: 0;
+  background-color:green;
+}
+.timeline-carousel__item-inner .pointer:before {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 4px;
+  background-color:green;
+}
+.timeline-carousel .slick-active .media-wrapper {
+  opacity: 1 !important;
+}
+
+.slick-dots {
+  bottom: 60px;
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  z-index: 2;
+}
+.slick-dots li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 15px;
+  position: relative;
+  width: 10px;
+  height: 10px;
+}
+.slick-dots li:last-child {
+  margin-right: 0;
+}
+.slick-dots li.slick-active button {
+  background: rgb(161, 159, 159);
+  border-color: rgb(190, 189, 189);
+}
+.slick-dots li button {
+  display: block;
+  font-size: 0;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  background-color:green;
+  border-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  -webkit-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  -o-transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+.slick-dots li button:hover {
+  background: rgb(185, 183, 183);
+  border-color: rgb(201, 195, 195);
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body { font-family: Arial, sans-serif; background-color: #ffffff; margin: 0; padding: 0; }
+
+ h2 {
+        background-color: green;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+
+}
+
+
+h1 {
+        color: green;
+}
+
+p {
+        font-size: 16px;
+        line-height: 1.6;
+}
+
+footer {
+        background-color:green;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        margin-left: 30px;
+ }
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 105%;
+            height: 50vh;
+            background-color: #f1f9ff;
+            flex-wrap: wrap;
+            flex-direction: column;
+            margin-left: 30px;
+            margin-top:100px;
+ 
+}
+
+.container h1{
+            font-size: 40px;
+            line-height: 5;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+}
+
+.social{
+            display: flex;
+            gap: 30px;
+}
+
+.social a{
+            position: relative;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            background: linear-gradient(145deg, #ffffff, #d9e0e6);
+            box-shadow: inset 6px 6px 14px #8e9396,
+                    inset -6px -6px 14px #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+}
+
+.social a .fa-brands{
+            position: relative;
+            font-size: 30px;
+            line-height: 80px;
+            z-index: 2;
+            transition: color 0.5s;
+            
+        }
+
+.social a::after{
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: -90px;
+            left: 0;
+            background: linear-gradient(-45deg, #12c2e9, #c471ed, #f64f59);
+            position: absolute;
+            border-radius: 25px;
+            transition: 0.5s ease;
+}
+
+.social a:hover::after{
+            top: 0;
+ }
+
+.social a:hover .fa-brands{
+            color: #fff;
+            text-shadow:  1px 2px 14px #8e93969c,
+            -1px -2px 14px #ffffffb7;
+ }
+
+
+
+
+
+</style>
+</head>
+<body>
+
+ 
+
+                              <!--NavBar-->
+           
+<div class="video-container">
+<video id="myVideo" width="100%" height="980px" autoplay preload="auto" loop muted>
+  <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+
+
+<div class="sidebar_menu">
+<div class="Logo">
+         <i class='bx bxl-slack icon'></i>
+         <div class="Text_Logo">Kawasaki</div>
+         <i class='bx bx-menu' id="Button" ></i>
+</div>
+
+
+<ul class="Nav_Item">
+          <li>
+          <i class='bx bx-search' ></i>
+          <input type="text" placeholder="Search....">
+          <span class="Menu_btn">Search</span>
+          </li>
+
+<li>
+        <a href="#">
+          <i class='bx bx-grid-alt'></i>
+          <span class="Item_Name">Home</span>
+        </a>
+          <span class="Menu_btn">Dashboard</span>
+</li>
+
+<li>
+        <a href="projectloginpage.html">
+        <i class='bx bx-bell'></i>
+        <span class="Item_Name">Login</span>
+        </a>
+        <span class="Menu_btn">Login</span>
+</li>
+
+
+<li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="Item_Name">About Us</span>
+        </a>
+        <span class="Menu_btn">People</span>
+</li>
+
+<li>
+        <a href="#">
+        <i class='bx bxs-star-half'></i>
+        <span class="Item_Name">favorites</span>
+        </a>
+        <span class="Menu_btn">favorites</span>
+</li>
+
+<li>
+        <a href="#">
+        <i class='bx bx-trip'></i>
+        <span class="Item_Name">Expected</span>
+        </a>
+        <span class="Menu_btn">Workflows</span>
+</li>
+
+<li>
+        <a href="#">
+        <i class='bx bx-volume-low'></i>
+          <span class="Item_Name">Updates</span>
+        </a>
+        <span class="Menu_btn">Updates</span>
+</li>
+
+<li>
+        <a href="history.html">
+        <i class='bx bxs-extension'></i>
+        <span class="Item_Name"> Hisory </span>
+        </a>
+        <span class="Menu_btn">History  </span>
+</li>
+
+<li>
+        <a href="#">
+        <i class='bx bx-bell'></i>
+        <span class="Item_Name">Notifications</span>
+        </a>
+        <span class="Menu_btn">Notifications</span>
+</li>
+</ul>
+</div>
+
+
+<hr class="hr-line">
+
+
+
+                              <!--Bike list-->
+         
+  <section class="timeline-carousel">
+  <div class="timeline-carousel__item-wrapper" data-js="timeline-carousel">
+  
+  <div class="timeline-carousel__item">
+  <div class="timeline-carousel__image"> 
+   
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://motohouse.bg/wp-content/uploads/2020/01/23MY_Ninja_650_GN1_STU__3_.jpg') center center; background-size:cover;"></div>
+  </div>
+  
+  
+  
+  
+  <div class="timeline-carousel__item-inner"> <!--Ninja 650-->
+  <span class="year"> Ninja 650</span>
+  <span class="month"> ₹ 7,16,000.00</span>
+  <p>
+             Engine: 649 cc, air-cooled, BS6      <br>
+             Power: 67.3 bhp @ 8,000 rpm          <br>
+             Torque: 64 Nm @ 6,700 rpm            <br>
+             Mileage: 21 kmpl                     <br>
+             Top speed: 210 kmph                  <br>
+             Weight: 196 kg                       <br>
+             Fuel tank capacity: 15 liters        <br>
+             Brakes: Front and rear disc brakes with anti-locking braking system
+             Traction control system: Advanced system for improved sport riding performance</p>
+  </div>
+  </div>
+  
+  
+  <div class="timeline-carousel__item">  <!--Ninja H2R-->
+    <div class="timeline-carousel__image">
+     
+    <div class="media-wrapper media-wrapper--overlay" style="background: url('https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61IovTl+R1L._AC_UF1000,1000_QL80_.jpg ') center center; background-size:cover;"></div>
+    </div>
+    <div class="timeline-carousel__item-inner">
+    <span class="year"> Ninja H2R</span>
+    <span class="month"> ₹79,90,000.00</span>
+    <p>
+         Engine: 998 cc, liquid-cooled, inline four-cylinder, supercharged <br>
+         Power: 305.75 bhp at 14,000 rpm                                   <br>
+         Torque: 165 Nm at 12,500 rpm                                      <br>
+         Transmission: 6-speed manual                                      <br> 
+         Top speed: 400 kmph                                               <br>
+         Mileage: 15 kmpl                                                  <br>
+         Riding range: 340 km                                              <br>
+         Dimensions: 2070 mm long, 850 mm wide, 1160 mm high, 216 kg kerb weight<br>
+         Brakes: Dual semi-floating Brembo discs in the front, Brembo opposed 2-piston caliper disc in the rear
+    
+    </div>
+    </div>
+  
+  
+  
+  <div class="timeline-carousel__item">       <!--kawasaki-ninja-zx-10R-->
+   <div class="timeline-carousel__image">
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://imgd.aeplcdn.com/1280x720/n/cw/ec/1/versions/kawasaki-ninja-zx-10r-standard1676982404051.jpg ') center center; background-size:cover;"></div>
+   </div>
+   <div class="timeline-carousel__item-inner">
+     <span class="year"> Ninja ZX-10R </span>
+     <span class="month"> ₹ 16,46,953</span>
+     <p>
+           Engine: 998 cc, air-cooled, inline-four-cylinder                  <br>
+           Power: 203 PS @ 13,200 rpm                                        <br>
+           Torque: 114.9 Nm @ 11,400 rpm                                     <br>
+           Fuel capacity: 17 liters                                          <br>
+           Mileage: 12 kmpl                                                  <br>
+           Gears: 6 speed                                                    <br>
+           Tyre type: Tubeless                                               <br>
+           Kerb weight: 207 kg                                               <br>
+           Height: 1185 mm                                                   <br>
+    </p>
+      </div>
+      </div>
+  
+
+
+
+
+  
+  <div class="timeline-carousel__item">         <!--Ninja ZX-4R-->
+  <div class="timeline-carousel__image">
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://static.autox.com/uploads/bikes/2021/10/kawasaki-ninja-zx-6r.jpg ') center center; background-size:cover;"></div>
+  </div>
+  <div class="timeline-carousel__item-inner">
+  <span class="year"> Ninja ZX-4R</span>
+  <span class="month"> ₹ 8,49,000</span>
+  <p>
+             Engine:399 cc, liquid-cooled, 4-stroke, in-line four,             <br>
+             Power: 77 PS @ 14500 rpm                                          <br>
+             Torque: 39 Nm @ 13000 rpm                                         <br>
+             Fuel capacity: 15 liters                                          <br>
+             Mileage: 24.18 kmpl                                               <br>
+             Gears: 6 speed                                                    <br>
+             Tyre type: Tubeless                                               <br>
+             weight: 189 kg                                                    <br>
+             Height: 1185 mm                                                   <br>
+  </p>
+  </div>
+  </div>
+  
+  
+  <div class="timeline-carousel__item">         <!--ninja300-->
+  <div class="timeline-carousel__image">
+           <div class="media-wrapper media-wrapper--overlay" style="background: url('https://motobike.in/wp-content/uploads/2020/12/Kawasaki-Ninja-300-Lime-Green.jpg ') center center; background-size:cover;"></div>
+  </div>
+  <div class="timeline-carousel__item-inner">
+  <span class="year">  Ninja 300</span>
+  <span class="month"> ₹3,43,000</span>
+  <p>
+               Engine:296 cc, air-cooled, liquid-cooled, parallel twin,          <br>
+               Power: 38.88 bhp @ 11,000 rpm                                     <br>
+               Torque: 26.1 Nm @ 10,000 rpm                                      <br>
+               Fuel capacity: 17 liters                                          <br>
+               Mileage: 29 kmpl                                                  <br>
+               Gears: 6 speed                                                    <br>
+               Tyre type: Tubeless                                               <br>
+               weight: 189 kg                                                    <br>
+               Height: 1185 mm                                                   <br>
+  </p>
+  </div>
+  </div>
+  
+  
+  
+  <div class="timeline-carousel__item">         <!--Ninja 800-->
+  <div class="timeline-carousel__image">
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://bd.gaadicdn.com/processedimages/kawasaki/kawasaki-z800/640X309/v_kawasaki-z800-standard.jpg ') center center; background-size:cover;"></div>
+  </div>
+  <div class="timeline-carousel__item-inner">
+  <span class="year">Ninja 800</span>
+  <span class="month"> ₹ 8,49,000</span>
+  <p>
+          Engine:806 cc, in-line four cylinder, liquid-cooled,              <br>
+          Power: 111.5 bhp @ 10,200 rpm                                     <br>
+          Torque: 39 Nm @ 13000 rpm                                         <br>
+          Fuel capacity: 17 liters                                          <br>
+          Mileage: 16 kmpl                                                  <br>
+          Top speed: 233 kmph                                               <br>
+          Gears: 5 speed                                                    <br>
+          Tyre type: Tubeless                                               <br>
+          weight: 189 kg                                                    <br>
+          Height: 1185 mm                                                   <br>
+  </p>        
+  </div>
+  </div>
+    
+  
+  <div class="timeline-carousel__item">        <!--ninja H2 SX SE-->
+  <div class="timeline-carousel__image">
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://motobike.in/wp-content/uploads/2020/11/Kawasaki-Ninja-H2-SX-SE-Metallic-Graphite-Gray.jpg ') center center; background-size:cover;"></div>
+  </div>
+  <div class="timeline-carousel__item-inner">
+  <span class="year"> Ninja H2 SX SE</span>
+  <span class="month"> ₹ 28,19,000</span>
+  <p>
+         Engine: 998 cc, 4-stroke, in-line four-cylinder, DOHC, 16-valve, liquid-cooled, supercharged<br>
+         Power: 197.2 bhp @ 11000 rpm                                      <br>
+         Torque:137.3 Nm @ 8500 rpm                                        <br>
+         Fuel capacity: 19 liters                                          <br>
+         Mileage: 24.18 kmpl                                               <br>
+         Gears:6-speed manual                                              <br>
+         Tyre type: Tubeless                                               <br>
+         weight: 189 kg                                                    <br>
+         Height: 1185 mm                                                   <br>
+         Curb mass: 268 kg
+   </p>       
+  </div>
+  </div>
+      
+  
+  <div class="timeline-carousel__item">         <!--Ninja 400-->
+   <div class="timeline-carousel__image">   
+  <div class="media-wrapper media-wrapper--overlay" style="background: url('https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/kawasaki-ninja-400-standard1676981365444.jpg?q=80 ') center center; background-size:cover;"></div>
+  </div>
+  <div class="timeline-carousel__item-inner">
+  <span class="year"> Ninja 400</span>
+  <span class="month"> ₹ 5,23,985</span>
+  <p>
+           Engine:  399cc, liquid-cooled, four-stroke parallel twin          <br>
+           Power: 44.7 bhp @ 11000 rpm                                        <br>
+           Torque:137.3 Nm @ 8500 rpm                                        <br>
+           Fuel capacity: 19 liters                                          <br>
+           Mileage: 25 kmpl                                                  <br>
+           Gears:6-speed manual                                              <br>
+           Tyre type: Tubeless                                               <br>
+           weight: 168 kg                                                    <br>
+           Height: 1185 mm                                                   <br>
+           Curb mass: 268 kg
+  </p>       
+   </div>
+   </div>
+        
+
+   <hr class="hr-line">
+
+  <script> 
+  
+  $.js = function (el) {
+      return $('[data-js=' + el + ']')
+  };
+  
+  function carousel() {
+    $.js('timeline-carousel').slick({
+      infinite: false,
+      arrows: false,
+      dots: true,
+      autoplay: false,
+      speed: 1100,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      responsive: [
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }]
+    });
+  }
+  
+  carousel();
+  
+
+
+  
+  </script>
+
+
+
+
+  <script>
+    let sidebar = document.querySelector(".sidebar_menu");
+    let closeBtn = document.querySelector("#Button");
+    let searchBtn = document.querySelector(".bx-search");
+    closeBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+    searchBtn.addEventListener("click", ()=>{ 
+      sidebar.classList.toggle("open");
+      menuBtnChange(); 
+    });
+    function menuBtnChange() {
+    if(sidebar.classList.contains("open")){
+    closeBtn.classList.replace("bx-menu", "bxs-x-circle");
+    }else {
+    closeBtn.classList.replace("bxs-x-circle","bx-menu");
+    }
+    }
+
+    $(document).ready(function(){
+                         $(".owl-carousel").owlCarousel();                 
+});
+
+
+  </script>
+
+
+
+
+
+<div class="container"> 
+  <h2>Disclaimer</h2> 
+  <p> The information contained in this Web site or any documents it refers to are for guidance purposes only. No representation or warranty, express or implied, is made or given, including without limitation any implied warranties of merchantability or fitness for any particular purpose, except where such representation or warranty is required by law. Any use made of such information, whether in the form of advice or recommendation, must be independently verified before reliance is placed upon it. </p>
+   <h2>Privacy Policy</h2>
+    <p> The Company does not collect or store your personal data on this Web site. Any personal data that you may provide in your communication with the Company, such as via email, will not be collected or stored by the Company without your express consent. The Company will not sell, lease, share or transfer any of your personal data with third parties, except where such transfer is necessary to fulfill legal requirements. </p> <h2>Legal</h2>
+     <p> These terms and conditions, together with any documents expressly referred to in these terms and conditions, set out the whole agreement between you and the Company regarding your use of this Web site and the Company’s products and services. </p>
+</div>
+
+ <footer>
+<p> © 2023 INDIA KAWASAKI MOTORS PVT. LTD. </p> 
+</footer> 
+
+<div class="container">
+       <h1>Social Media icons</h1>
+       <div class="social">
+           <a href="#"><i class="fa-brands fa-facebook"></i></a>
+           <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+           <a href="#"><i class="fa-brands fa-instagram"></i></a>
+           <a href="#"><i class="fa-brands fa-github"></i></a>
+           <a href="#"><i class="fa-brands fa-youtube"></i></a>
+       </div>
+   </div>
+
+
+
+
+
+</body>
+</html>
